@@ -1,0 +1,7 @@
+{
+  "name": "TravelBuddy",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular-standalone"
+}
