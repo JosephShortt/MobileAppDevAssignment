@@ -1,0 +1,50 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>{{ country.name.common }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card>
+    <ion-card-content>
+      <img [src]="country.flags.svg" alt="Flag of {{ country.name.common }}" style="width: 100px; height: auto;">
+      <p>Capital: {{ country.capital[0] }}</p>
+      <p>Main Language: {{ country.languages | json }}</p>
+      <p>Currency: {{ country.currencies | json }}</p>
+      <p>Country Population: {{ country.population | number }}</p> <!-- Updated to use number pipe -->
+      <ion-button expand="block" (click)="openMap(country.maps.googleMaps)">
+        Explore On googleMaps
+        <ion-icon slot="end" name="open"></ion-icon>
+      </ion-button>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card *ngIf="weather">
+    <ion-card-header>
+      <ion-card-title>Current Weather</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <p>Temperature: {{ weather?.days[0]?.temp }}°C</p>
+      <p>Conditions: {{ weather?.days[0]?.conditions }}</p>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Landmark Photographs Of {{country.name.common}}</ion-card-title>
+    </ion-card-header>
+  <ion-grid>
+    <ion-row>
+      <ion-col size="12" size-md="6" *ngFor="let image of landmarkImages">
+        <ion-card>
+          <img [src]="image.url" alt="{{ image.description || 'Landmark image' }}" class="image-size">
+          <ion-card-content>
+            <p>{{ image.description || 'No description available' }}</p>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-card>
+
+</ion-content>

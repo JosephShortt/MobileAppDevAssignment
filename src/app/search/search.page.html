@@ -1,0 +1,18 @@
+<ion-header translucent="true">
+  <ion-toolbar>
+    <ion-title>Search Countries</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content fullscreen="true">
+  <ion-searchbar placeholder="Enter country name" (ionChange)="onSearchChange($event)"></ion-searchbar>
+  <ion-list>
+    <ion-item *ngFor="let country of searchResults">
+      <ion-label>
+        <h2>{{ country.name.common }}</h2>
+        <p>Capital: {{ country.capital ? country.capital[0] : 'No capital' }}</p>
+      </ion-label>
+      <ion-button fill="outline" (click)="viewCountryDetails(country)">More Info</ion-button>
+    </ion-item>
+  </ion-list>
+</ion-content>
