@@ -17,6 +17,8 @@ bootstrapApplication(AppComponent, {
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
     provideIonicAngular(),
     provideRouter(routes),
+
+    // Import providers from HttpClientModule for HTTP requests
     importProvidersFrom(HttpClientModule)
 
   ],

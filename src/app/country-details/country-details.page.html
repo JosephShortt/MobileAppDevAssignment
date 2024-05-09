@@ -1,6 +1,7 @@
 <ion-header>
   <ion-toolbar>
     <ion-buttons slot="start">  
+          <!-- Back button -->
       <ion-back-button defaultHref="/"></ion-back-button>
     </ion-buttons>
     <ion-title>{{ country.name.common }}</ion-title>
@@ -9,16 +10,18 @@
 
 <ion-content>
   <ion-card>
+          <!-- Card content displaying countires flag, capital, currency, main language, population and link to google maps + current weather in captial-->
     <ion-card-content>
       <img [src]="country.flags.svg" alt="Flag of {{ country.name.common }}" style="width: 100px; height: auto;">
       <p>Capital: {{ country.capital[0] }}</p>
       <p>Main Language: {{ country.languages | json }}</p>
       <p>Currency: {{ country.currencies | json }}</p>
       <p>Country Population: {{ country.population | number }}</p> <!-- Updated to use number pipe -->
-      <ion-button expand="block" (click)="openMap(country.maps.googleMaps)">
-        Explore On googleMaps
-        <ion-icon slot="end" name="open"></ion-icon>
+      <ion-button expand="block" (click)="getDirections()">
+        Get Directions/Flights to {{ country.capital[0] }}
+        <ion-icon slot="end" name="navigate"></ion-icon>
       </ion-button>
+      
     </ion-card-content>
   </ion-card>
 
@@ -31,7 +34,7 @@
       <p>Conditions: {{ weather?.days[0]?.conditions }}</p>
     </ion-card-content>
   </ion-card>
-
+  <!--Uses unsplash api to display landmark images of country chosen-->
   <ion-card>
     <ion-card-header>
       <ion-card-title>Landmark Photographs Of {{country.name.common}}</ion-card-title>

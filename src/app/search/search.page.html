@@ -6,12 +6,13 @@
     <ion-title>Search Countries</ion-title>
   </ion-toolbar>
 </ion-header>
-
+   <!--User entry for country and calls onSearchChange() if they change country name-->
 <ion-content fullscreen="true">
   <ion-searchbar placeholder="Enter country name" (ionChange)="onSearchChange($event)"></ion-searchbar>
   <ion-list>
     <ion-item *ngFor="let country of searchResults">
       <ion-label>
+        <!--Uses api to fetch country common name and capital and displays it for the user along with option to view more information which calls viewCountryDetails()-->
         <h2>{{ country.name.common }}</h2>
         <p>Capital: {{ country.capital ? country.capital[0] : 'No capital' }}</p>
       </ion-label>

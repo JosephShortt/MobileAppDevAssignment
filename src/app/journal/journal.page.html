@@ -12,6 +12,7 @@
     <!-- Country input -->
     <ion-item>
         <ion-label position="floating">Country</ion-label>
+        <!--calls updatefield() whenever user enters into form field and uses two way binding and ensure it is string using toString()-->
         <ion-input [(ngModel)]="journalEntry.country" name="country"
            (ionChange)="updateField('country', $event.target.value ? $event.target.value.toString() : '')" placeholder="Enter a country"></ion-input>
     </ion-item>

@@ -3,6 +3,9 @@ import { CommonModule } from '@angular/common';
 import { FormsModule, NgForm } from '@angular/forms';
 import { IonContent, IonHeader, IonTitle, IonToolbar, IonSearchbar, IonList, IonItem, IonLabel, IonButton, IonCard, IonCardContent, IonIcon , IonCardHeader, IonCardTitle,IonGrid
 ,IonRow,IonCol,IonInput, IonTextarea,IonButtons,IonBackButton, IonSelectOption, IonDatetime} from '@ionic/angular/standalone';
+
+
+// Definition of interface for the booking form
 interface BookingForm {
   destination: string;
   travelDate: string;
@@ -20,6 +23,7 @@ interface BookingForm {
 })
 export class BookingPage implements OnInit {
 
+  //Booking form object
   form: BookingForm = {
     destination: '',
     travelDate: '',
@@ -28,6 +32,8 @@ export class BookingPage implements OnInit {
     adults: ''
   };
 
+  //Destination ids corresponding to their name(Had to hardcode these select few as loveholiday site does 
+  //not disclose them so i manually searched each location and got their id from the url)
   destinations = [
     { name: 'France', id: '2842' },
     { name: 'Spain', id: '987' },
@@ -45,13 +51,14 @@ export class BookingPage implements OnInit {
     { name: 'United Kingdom', id: '1928' },
     { name: 'Belgium', id: '2778' }
   ];
-
-  departureAirport = 'DUB'; // Constant for Dublin airport
+  //Using dublin airport as the departure airport
+  departureAirport = 'DUB';
 
   constructor() { }
-
+  //minDate for the minimum date the user can book from
   minDate: string='';
 
+  //Calculates the minimum date for the current day the user can book from which is just 2 days from the current day
   ngOnInit() {
     const today = new Date();
     const twoDaysLater = new Date(today.setDate(today.getDate() + 2)); // Calculate two days from today
@@ -62,26 +69,16 @@ export class BookingPage implements OnInit {
     this.form.travelDate = this.minDate;
   }
   
-
+  //Handles when the date is changed 
   handleDateChange(event: any) {
     const value = event.detail.value; // Accessing the date value from the event object
-    this.updateField('travelDate', value ? new Date(value).toISOString().split('T')[0] : '');
+    this.updateField('travelDate', value ? new Date(value).toISOString().split('T')[0] : ''); //updates the date using updateField() function
   }
   updateField(field: keyof BookingForm, value: string) {
     this.form[field] = value;
   }
-  /*
-  redirectToLoveHolidays() {
-    if (this.form.destination && this.form.travelDate && this.form.duration && this.form.rooms && this.form.adults) {
-      // Construct URL with parameters in the exact order as required
-      const url = `https://www.loveholidays.ie/holidays/?destinationIds=${this.form.destination}&departureAirports=DUB&nights=${this.form.duration}&rooms=${this.form.rooms}&date=${this.form.travelDate}&flexibility=0`;
-      window.open(url, '_blank');
-    } else {
-      console.error('Form is incomplete:', this.form);
-    }
-  }
-  */
 
+  //redirectToLoveHolidays() take sin user form details and binds it to url string to redirect user to loveholiday with user defined search properties 
   redirectToLoveHolidays() {
     if (this.form.destination && this.form.travelDate && this.form.duration && this.form.rooms && this.form.adults) {
       // Constructing the URL with parameters in the exact specified order

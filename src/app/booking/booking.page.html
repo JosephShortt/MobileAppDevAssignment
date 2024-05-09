@@ -1,6 +1,7 @@
 <ion-header>
   <ion-toolbar>
     <ion-buttons slot="start">  
+       <!-- Back button -->
       <ion-back-button defaultHref="/"></ion-back-button>
     </ion-buttons>
     <ion-title>Booking</ion-title>
@@ -8,9 +9,11 @@
 </ion-header>
 
 <ion-content>
+    <!-- Form for booking -->
   <form (ngSubmit)="redirectToLoveHolidays()">
     <ion-item>
       <ion-label position="floating">Destination</ion-label>
+          <!-- Options for destination selection -->
       <ion-select [(ngModel)]="form.destination" name="destination" required (ionChange)="updateField('destination', $event.detail.value)">
         <ion-select-option *ngFor="let destination of destinations" [value]="destination.id">
           {{ destination.name }}
@@ -18,29 +21,39 @@
       </ion-select>
     </ion-item>
     
-    
+    <!-- Date input for travel date -->
     <ion-item>
       <ion-label position="floating">Travel Date</ion-label>
       <ion-datetime displayFormat="YYYY-MM-DD" pickerFormat="YYYY-MM-DD" [(ngModel)]="form.travelDate" required min="{{ minDate }}" name="travelDate" required 
                     (ionChange)="handleDateChange($event)"></ion-datetime>
     </ion-item>
     
-    
+        <!-- Input for duration in nights -->
+
     <ion-item>
       <ion-label position="floating">Duration (nights)</ion-label>
       <ion-input type="number" [(ngModel)]="form.duration" name="duration" required
                  (ionChange)="updateField('duration', $event.target.value ? $event.target.value.toString() : '')"></ion-input>
     </ion-item>
+
+        <!-- Input for number of rooms -->
+
     <ion-item>
       <ion-label position="floating">Rooms</ion-label>
       <ion-input type="number" [(ngModel)]="form.rooms" name="rooms" required
                  (ionChange)="updateField('rooms', $event.target.value ? $event.target.value.toString() : '')"></ion-input>
     </ion-item>
+
+        <!-- Input for number of adults -->
+
     <ion-item>
       <ion-label position="floating">Adults</ion-label>
       <ion-input type="number" [(ngModel)]="form.adults" name="adults" required
                  (ionChange)="updateField('adults', $event.target.value ? $event.target.value.toString() : '')"></ion-input>
     </ion-item>
+
+        <!-- Submit button for searching holidays -->
+
     <ion-button type="submit" expand="full">Search Holidays</ion-button>
   </form>
 </ion-content>
