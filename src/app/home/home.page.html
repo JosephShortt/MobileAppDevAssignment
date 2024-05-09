@@ -4,31 +4,33 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content fullscreen="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Welcome!</ion-title>
-    </ion-toolbar>
-  </ion-header>
-
-  <div id="container">
-    <strong>Welcome to Travel Buddy!</strong>
-    <p>Your ultimate travel companion.</p>
+<ion-content fullscreen="true" style="background: linear-gradient(to right, #6a11cb 0%, #2575fc 100%);">
+  <div id="container" style="display: flex; flex-direction: column; justify-content: center; align-items: center; height: 100%; padding: 20px; padding-top: 60px;">
+    <h1 style="color: #000000; font-size: 2.5rem; text-align: center; margin-bottom: 0.5rem;">Explore the World</h1>
+    <p style="color: #000000; font-size: 1.2rem; text-align: center; margin-bottom: 2rem;">Let us guide you to your next great adventure!</p>
     <ion-grid>
       <ion-row>
-        <ion-col size="6">
-          <ion-button expand="block" routerLink="/search">Destination Search</ion-button>
-        </ion-col>
-        <ion-col size="6">
-          <ion-button expand="block" routerLink="/itinerary">Itinerary Planner</ion-button>
+        <ion-col size="12">
+          <ion-button expand="block" style="margin-bottom: 20px; border-radius: 8px; background-color: #007bff; color: #ffffff; font-weight: bold; box-shadow: 0 4px 14px 0 rgba(0, 118, 255, 0.39);" routerLink="/search">
+            <ion-icon name="search" slot="start"></ion-icon>
+            Destination Search
+          </ion-button>
         </ion-col>
       </ion-row>
       <ion-row>
-        <ion-col size="6">
-          <ion-button expand="block" routerLink="/journal">Travel Journal</ion-button>
+        <ion-col size="12">
+          <ion-button expand="block" style="margin-bottom: 20px; border-radius: 8px; background-color: #28a745; color: #ffffff; font-weight: bold; box-shadow: 0 4px 14px 0 rgba(40, 167, 69, 0.4);" routerLink="/journal">
+            <ion-icon name="book" slot="start"></ion-icon>
+            Travel Journal
+          </ion-button>
         </ion-col>
-        <ion-col size="6">
-          <ion-button expand="block" routerLink="/budget">Budget Tracker</ion-button>
+      </ion-row>
+      <ion-row>
+        <ion-col size="12">
+          <ion-button expand="block" style="border-radius: 8px; background-color: #17a2b8; color: #ffffff; font-weight: bold; box-shadow: 0 4px 14px 0 rgba(23, 162, 184, 0.4);" routerLink="/booking">
+            <ion-icon name="briefcase" slot="start"></ion-icon>
+            Book Holiday
+          </ion-button>
         </ion-col>
       </ion-row>
     </ion-grid>

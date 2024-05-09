@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { CountryService } from '../Services/country.service';
-import { IonContent, IonHeader, IonTitle, IonToolbar, IonSearchbar, IonList, IonItem, IonLabel, IonButton, IonCard, IonCardContent, IonIcon , IonCardHeader, IonCardTitle,IonGrid,IonRow,IonCol} from '@ionic/angular/standalone'; // Adjust the import paths if necessary
+import { IonContent, IonHeader, IonTitle, IonToolbar, IonSearchbar, IonList, IonItem, IonLabel, IonButton, IonCard, IonCardContent, IonIcon , IonCardHeader, IonCardTitle,IonGrid,IonRow,IonCol,IonButtons,IonBackButton} from '@ionic/angular/standalone'; // Adjust the import paths if necessary
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
@@ -17,7 +17,7 @@ interface Image {
   templateUrl: './country-details.page.html',
   styleUrls: ['./country-details.page.scss'],
   standalone: true,
-  imports: [CommonModule, FormsModule, IonContent, IonHeader, IonTitle, IonToolbar, IonSearchbar, IonList, IonItem, IonLabel, IonButton, IonCard, IonCardContent, IonIcon, IonCardHeader, IonCardTitle,IonGrid,IonRow,IonCol]
+  imports: [CommonModule, FormsModule, IonContent, IonHeader, IonTitle, IonToolbar, IonSearchbar, IonList, IonItem, IonLabel, IonButton, IonCard, IonCardContent, IonIcon, IonCardHeader, IonCardTitle,IonGrid,IonRow,IonCol,IonButtons,IonBackButton]
 })
 export class CountryDetailsPage implements OnInit {
   country: any;

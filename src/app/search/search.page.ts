@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { IonContent, IonHeader, IonTitle, IonToolbar, IonSearchbar, IonList, IonItem, IonLabel,IonButton} from '@ionic/angular/standalone';
+import { IonContent, IonHeader, IonTitle, IonToolbar, IonSearchbar, IonList, IonItem, IonLabel,IonButton,IonButtons,IonBackButton} from '@ionic/angular/standalone';
 import { CountryService } from '../Services/country.service';
 import { Router } from '@angular/router';
 
@@ -10,7 +10,7 @@ import { Router } from '@angular/router';
   templateUrl: './search.page.html',
   styleUrls: ['./search.page.scss'],
   standalone: true,
-  imports: [CommonModule, FormsModule, IonContent, IonHeader, IonTitle, IonToolbar, IonSearchbar, IonList, IonItem, IonLabel ,IonButton]
+  imports: [CommonModule, FormsModule, IonContent, IonHeader, IonTitle, IonToolbar, IonSearchbar, IonList, IonItem, IonLabel ,IonButton,IonButtons,IonBackButton]
 })
 export class SearchPage implements OnInit {
   searchResults: any[] = [];

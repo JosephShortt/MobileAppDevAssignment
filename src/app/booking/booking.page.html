@@ -1,0 +1,46 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">  
+      <ion-back-button defaultHref="/"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Booking</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form (ngSubmit)="redirectToLoveHolidays()">
+    <ion-item>
+      <ion-label position="floating">Destination</ion-label>
+      <ion-select [(ngModel)]="form.destination" name="destination" required (ionChange)="updateField('destination', $event.detail.value)">
+        <ion-select-option *ngFor="let destination of destinations" [value]="destination.id">
+          {{ destination.name }}
+        </ion-select-option>
+      </ion-select>
+    </ion-item>
+    
+    
+    <ion-item>
+      <ion-label position="floating">Travel Date</ion-label>
+      <ion-datetime displayFormat="YYYY-MM-DD" pickerFormat="YYYY-MM-DD" [(ngModel)]="form.travelDate" required min="{{ minDate }}" name="travelDate" required 
+                    (ionChange)="handleDateChange($event)"></ion-datetime>
+    </ion-item>
+    
+    
+    <ion-item>
+      <ion-label position="floating">Duration (nights)</ion-label>
+      <ion-input type="number" [(ngModel)]="form.duration" name="duration" required
+                 (ionChange)="updateField('duration', $event.target.value ? $event.target.value.toString() : '')"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Rooms</ion-label>
+      <ion-input type="number" [(ngModel)]="form.rooms" name="rooms" required
+                 (ionChange)="updateField('rooms', $event.target.value ? $event.target.value.toString() : '')"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Adults</ion-label>
+      <ion-input type="number" [(ngModel)]="form.adults" name="adults" required
+                 (ionChange)="updateField('adults', $event.target.value ? $event.target.value.toString() : '')"></ion-input>
+    </ion-item>
+    <ion-button type="submit" expand="full">Search Holidays</ion-button>
+  </form>
+</ion-content>
